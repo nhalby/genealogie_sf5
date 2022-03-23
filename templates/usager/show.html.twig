@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usager{% endblock %}
+
+{% block body %}
+    <h1>Usager</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ usager.id }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ usager.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom2</th>
+                <td>{{ usager.prenom2 }}</td>
+            </tr>
+            <tr>
+                <th>Prenom3</th>
+                <td>{{ usager.prenom3 }}</td>
+            </tr>
+            <tr>
+                <th>Prenom4</th>
+                <td>{{ usager.prenom4 }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ usager.nom }}</td>
+            </tr>
+            <tr>
+                <th>Surnom</th>
+                <td>{{ usager.surnom }}</td>
+            </tr>
+            <tr>
+                <th>Date_naissance</th>
+                <td>{{ usager.dateNaissance ? usager.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Parent1_id</th>
+                <td>{{ usager.parent1Id }}</td>
+            </tr>
+            <tr>
+                <th>Parent2_id</th>
+                <td>{{ usager.parent2Id }}</td>
+            </tr>
+            <tr>
+                <th>Valide</th>
+                <td>{{ usager.valide ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ usager.createdAt ? usager.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedBy</th>
+                <td>{{ usager.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ usager.updatedAt ? usager.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedBy</th>
+                <td>{{ usager.updatedBy }}</td>
+            </tr>
+            <tr>
+                <th>DeletedAt</th>
+                <td>{{ usager.deletedAt ? usager.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DeletedBy</th>
+                <td>{{ usager.deletedBy }}</td>
+            </tr>
+            <tr>
+                <th>IsDraft</th>
+                <td>{{ usager.isDraft ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_usager_index') }}">back to list</a>
+
+    <a href="{{ path('app_usager_edit', {'id': usager.id}) }}">edit</a>
+
+    {{ include('usager/_delete_form.html.twig') }}
+{% endblock %}

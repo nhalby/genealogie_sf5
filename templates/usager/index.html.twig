@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usager index{% endblock %}
+
+{% block body %}
+    <h1>Usager index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prenom</th>
+                <th>Prenom2</th>
+                <th>Prenom3</th>
+                <th>Prenom4</th>
+                <th>Nom</th>
+                <th>Surnom</th>
+                <th>Date_naissance</th>
+                <th>Parent1_id</th>
+                <th>Parent2_id</th>
+                <th>Valide</th>
+                <th>CreatedAt</th>
+                <th>CreatedBy</th>
+                <th>UpdatedAt</th>
+                <th>UpdatedBy</th>
+                <th>DeletedAt</th>
+                <th>DeletedBy</th>
+                <th>IsDraft</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usager in usagers %}
+            <tr>
+                <td>{{ usager.id }}</td>
+                <td>{{ usager.prenom }}</td>
+                <td>{{ usager.prenom2 }}</td>
+                <td>{{ usager.prenom3 }}</td>
+                <td>{{ usager.prenom4 }}</td>
+                <td>{{ usager.nom }}</td>
+                <td>{{ usager.surnom }}</td>
+                <td>{{ usager.dateNaissance ? usager.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ usager.parent1Id }}</td>
+                <td>{{ usager.parent2Id }}</td>
+                <td>{{ usager.valide ? 'Yes' : 'No' }}</td>
+                <td>{{ usager.createdAt ? usager.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ usager.createdBy }}</td>
+                <td>{{ usager.updatedAt ? usager.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ usager.updatedBy }}</td>
+                <td>{{ usager.deletedAt ? usager.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ usager.deletedBy }}</td>
+                <td>{{ usager.isDraft ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_usager_show', {'id': usager.id}) }}">show</a>
+                    <a href="{{ path('app_usager_edit', {'id': usager.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_usager_new') }}">Create new</a>
+{% endblock %}
