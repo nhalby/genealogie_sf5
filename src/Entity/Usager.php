@@ -5,12 +5,15 @@ namespace App\Entity;
 use App\Entity\Abstractor\Generic;
 use App\Repository\UsagerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UsagerRepository::class)
  */
-class Usager extends Generic
+class Usager extends Generic implements \Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface
 {
+  use \Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -49,6 +52,11 @@ class Usager extends Generic
     private $surnom;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $surnomEn;
+
+    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $date_naissance;
@@ -67,6 +75,11 @@ class Usager extends Generic
      * @ORM\Column(type="boolean", nullable=false)
      */
     private $valide;
+
+  /**
+   * @Assert\Valid
+   */
+  protected $translations;
 
     public function getId(): ?int
     {
@@ -199,4 +212,38 @@ class Usager extends Generic
 
         return $this;
     }
+
+  /**
+   * @return mixed
+   */
+  public function getSurnomEn()
+  {
+    return $this->surnomEn;
+  }
+
+  /**
+   * @param mixed $surnomEn
+   */
+  public function setSurnomEn($surnomEn): void
+  {
+    $this->surnomEn = $surnomEn;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getTranslations()
+  {
+    return $this->translations;
+  }
+
+  /**
+   * @param mixed $translations
+   */
+  public function setTranslations($translations): void
+  {
+    $this->translations = $translations;
+  }
+
+
 }

@@ -1,0 +1,57 @@
+{% block a2lix_translations_widget %}
+  {{ form_errors(form) }}
+  <script src="{{ asset('assets/js/form.js') }}"></script>
+  {% set idTab = random() %}
+  <div id="{{ idTab }}" class="tabs-container">
+    <ul class="nav nav-tabs">
+      {% for translationsFields in form %}
+        {% set locale = translationsFields.vars.name %}
+        {% set trans_key = 'common.lang.'~locale %}
+
+        <li class="{% if app.request.locale == locale %}active{% endif %}">
+          <a href="#{{ translationsFields.vars.id }}_a2lix_translations-fields" class="" data-toggle="tab">
+            {{ trans_key|trans }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="tab-content">
+
+        {% for translationsFields in form %}
+          {% set locale = translationsFields.vars.name %}
+
+          <div id="{{ translationsFields.vars.id }}_a2lix_translations-fields" class="tab-pane {% if app.request.locale == locale %}active{% endif %} {% if not form.vars.valid %}sonata-ba-field-error{% endif %}">
+            <div class="panel-body">
+            {{ form_errors(translationsFields) }}
+            {{ form_widget(translationsFields) }}
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      FormTabs.init('#{{ idTab }}');
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+      var elements = document.getElementsByTagName("INPUT");
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].oninvalid = function(e) {
+          var id = e.target.id;
+          // recupération du tab-pane conserné par l'erreur
+          var container = $('#'+id).closest(".tab-pane");
+          // récupération de l'id du container conserné par l'erreur
+          var idContainer = $(container).attr('id');
+
+          $('a[href="#'+idContainer+'"]').click();
+        };
+      }
+    });
+  </script>
+  <script src="{{ asset('assets/js/plugins/chosen/chosen.jquery.js') }}">></script>
+{% endblock %}
+
+{% block a2lix_translationsForms_widget %}
+  {{ block('a2lix_translations_widget') }}
+{% endblock %}

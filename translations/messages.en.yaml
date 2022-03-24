@@ -1,0 +1,10 @@
+label:
+  content: Contenu
+admin:
+  form:
+    common:
+      translation: Traduction
+common:
+  lang:
+    fr: Fr
+    en: En

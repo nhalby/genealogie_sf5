@@ -1,4 +1,13 @@
 {
+    "a2lix/auto-form-bundle": {
+        "version": "0.4.1"
+    },
+    "a2lix/translation-form-bundle": {
+        "version": "3.2.0"
+    },
+    "brick/math": {
+        "version": "0.9.3"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -83,6 +92,9 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.7"
     },
+    "knplabs/doctrine-behaviors": {
+        "version": "2.2.0"
+    },
     "laminas/laminas-code": {
         "version": "4.5.1"
     },
@@ -91,6 +103,9 @@
     },
     "myclabs/deep-copy": {
         "version": "1.11.0"
+    },
+    "nette/utils": {
+        "version": "v3.2.7"
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
@@ -159,6 +174,12 @@
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "ramsey/collection": {
+        "version": "1.2.2"
+    },
+    "ramsey/uuid": {
+        "version": "4.2.3"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
